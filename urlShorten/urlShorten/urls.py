@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from short.views import RedirectView, HomeView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^(?P<newurl>[\w-]+)/$', RedirectView.as_view(), name='created_url'),
+    url(r'^$', HomeView.as_view())
 ]
